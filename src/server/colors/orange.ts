@@ -1,18 +1,24 @@
 import { Request, Response, Router } from "express";
 
-type OrangeGetResponse = Response;
+type OrangeGetResponse = Response<{ color: string } | { colorError: string }>;
 type OrangeGetRequest = Request;
 
 export const orangeRouter = Router();
 
 export const orangeGetter = (req: OrangeGetRequest, res: OrangeGetResponse) => {
-  res.send({ });
+  if (Math.random() > 0.5) {
+    return res.status(500).send({ colorError: "Server error" });
+  }
+  res.send({ color: "orange" });
 };
 
 type OrangePostResponse = Response;
 type OrangePostRequest = Request;
 
-export const orangePoster = (req: OrangePostRequest, res: OrangePostResponse) => {
+export const orangePoster = (
+  req: OrangePostRequest,
+  res: OrangePostResponse
+) => {
   res.sendStatus(200);
 };
 

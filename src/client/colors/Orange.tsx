@@ -3,18 +3,22 @@ import { useMutation, useQuery } from "react-query";
 import axios, { AxiosError } from "axios";
 
 type OrangeColor = {
+  initialColor: string;
 };
+type ResponseBodyOrange = { color: string; optionalProp?: number };
+type OrangeColorHex = {};
 
-type OrangeColorHex = {
-};
+export const Orange: React.FC<OrangeColor> = (props) => {
+  const initialColor = props.initialColor;
+  const [color, setColor] = React.useState<string>("orange");
 
-export const Orange = ({initialColor}: {initialColor: string}) => {
-  const [color, setColor] = React.useState("orange");
-
-  const { data, error } = useQuery({
+  const { data, error } = useQuery<
+    ResponseBodyOrange,
+    AxiosError<{ colorError: string }>
+  >({
     queryKey: ["orange"],
     queryFn: async () => {
-      const response = await axios.get("/orange");
+      const response = await axios.get<ResponseBodyOrange>("/orange");
       const data = response.data;
       return data;
     },
@@ -23,7 +27,7 @@ export const Orange = ({initialColor}: {initialColor: string}) => {
   const mutate = useMutation({
     mutationKey: ["orangehex"],
     mutationFn: async () => {
-      const response = await axios.post("/orange", {
+      const response = await axios.post<ResponseBodyOrange>("/orange", {
         color,
       });
       const data = response.data;
@@ -38,15 +42,15 @@ export const Orange = ({initialColor}: {initialColor: string}) => {
     // return <div>{error?.response?.data.colorError}</div>;
   }
 
-  const classFromEndpoint = data?.color ?? initialColor;
+  const classFromEndpoint = data?.color;
 
   return classFromEndpoint === color ? (
     <div className={classFromEndpoint} onClick={onClickHandler}></div>
   ) : (
     <div
-      className={classFromEndpoint}
-      onClick={onClickHandler}
-      style={{ backgroundColor: color }}
+    // className={classFromEndpoint}
+    // onClick={onClickHandler}
+    // style={{ backgroundColor: color }}
     ></div>
   );
 };
