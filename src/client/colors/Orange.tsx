@@ -8,7 +8,7 @@ type OrangeColor = {
 type OrangeColorHex = {
 };
 
-export const Orange: React.FC = () => {
+export const Orange = ({initialColor}: {initialColor: string}) => {
   const [color, setColor] = React.useState("orange");
 
   const { data, error } = useQuery({
@@ -16,7 +16,6 @@ export const Orange: React.FC = () => {
     queryFn: async () => {
       const response = await axios.get("/orange");
       const data = response.data;
-      console.log(data);
       return data;
     },
   });
@@ -39,7 +38,7 @@ export const Orange: React.FC = () => {
     // return <div>{error?.response?.data.colorError}</div>;
   }
 
-  const classFromEndpoint = data?.color;
+  const classFromEndpoint = data?.color ?? initialColor;
 
   return classFromEndpoint === color ? (
     <div className={classFromEndpoint} onClick={onClickHandler}></div>

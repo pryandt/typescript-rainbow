@@ -8,7 +8,7 @@ type VioletColor = {
 type VioletColorHex = {
 };
 
-export const Violet: React.FC = () => {
+export const Violet= ({initialColor}: {initialColor: string}) => {
   const [color, setColor] = React.useState("violet");
 
   const { data, error } = useQuery({
@@ -16,7 +16,6 @@ export const Violet: React.FC = () => {
     queryFn: async () => {
       const response = await axios.get("/violet");
       const data = response.data;
-      console.log(data);
       return data;
     },
   });
@@ -39,7 +38,7 @@ export const Violet: React.FC = () => {
     // return <div>{error?.response?.data.colorError}</div>;
   }
 
-  const classFromEndpoint = data?.color;
+  const classFromEndpoint = data?.color ?? initialColor;
 
   return classFromEndpoint === color ? (
     <div className={classFromEndpoint} onClick={onClickHandler}></div>

@@ -18,11 +18,11 @@ app.get("/hello", (_, res) => {
 
 app.use("/red", redRouter);
 app.use("/orange", orangeRouter);
-app.use("yellow", yellowRouter);
-app.use("green", greenRouter);
-app.use("blue", blueRouter);
-app.use("violet", violetRouter);
-app.use("purple", purpleRouter);
+app.use("/yellow", yellowRouter);
+app.use("/green", greenRouter);
+app.use("/blue", blueRouter);
+app.use("/violet", violetRouter);
+app.use("/purple", purpleRouter);
 
 ViteExpress.listen(app, 3000, () =>
   console.log("Server is listening on port 3000..."),
