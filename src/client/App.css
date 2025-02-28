@@ -1,5 +1,7 @@
 body {
+  --background-color: #242424;
   font-family: Helvetica;
+  background-color: var(--background-color);
 }
 
 .rainbow-header {
@@ -74,7 +76,7 @@ body {
   top: 12.5vw;
 }
 
-.pink {
+.violet {
   background-color: #EBB1D4;
   width: 60vw;
   height: 30vw;
@@ -83,38 +85,11 @@ body {
   top: 15vw;
 }
 
-.lightblue {
-  background-color: #ABD4DD;
+.inner-circle {
+  background-color: var(--background-color);
   width: 55vw;
   height: 27.5vw;
   position: absolute;
   left: 17.5vw;
   top: 17.5vw;
-}
-
-.brown {
-  background-color: #6D3E35;
-  width: 50vw;
-  height: 25vw;
-  position: absolute;
-  left: 20vw;
-  top: 20vw;
-}
-
-.black {
-  background-color: #000000;
-  width: 45vw;
-  height: 22.5vw;
-  position: absolute;
-  left: 22.5vw;
-  top: 22.5vw;
-}
-
-.white {
-  background-color: #ffffff;
-  width: 40vw;
-  height: 20vw;
-  position: absolute;
-  left: 25vw;
-  top: 25vw;
 }
