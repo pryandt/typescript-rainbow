@@ -1,12 +1,17 @@
 import { Request, Response, Router } from "express";
 
-type YellowGetResponse = Response;
+export type YellowResponseBody = {
+  color: string
+}
+type YellowGetResponse = Response<YellowResponseBody>;
 type YellowGetRequest = Request;
 
 export const yellowRouter = Router();
 
 export const yellowGetter = (req: YellowGetRequest, res: YellowGetResponse) => {
-  res.send({ });
+  res.send({
+    color: 'yellow',
+  });
 };
 
 type YellowPostResponse = Response;
