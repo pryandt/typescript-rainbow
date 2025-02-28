@@ -1,6 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
-import { redRouter } from "./colors/red.js";
+// import { redRouter } from "./colors/red.js";
 import { orangeRouter } from "./colors/orange.js";
 import { yellowRouter } from "./colors/yellow.js";
 import { blueRouter } from "./colors/blue.js";
@@ -16,7 +16,7 @@ app.get("/hello", (_, res) => {
   res.send("Hello Vite + React + TypeScript!");
 });
 
-app.use("/red", redRouter);
+// app.use("/red", redRouter);
 app.use("/orange", orangeRouter);
 app.use("/yellow", yellowRouter);
 app.use("/green", greenRouter);

@@ -2,8 +2,7 @@ import "./App.css";
 
 import { useState } from "react";
 
-import reactLogo from "./assets/react.svg";
-import { Red } from './colors/Red';
+// import { Red } from './colors/Red';
 import { Orange } from './colors/Orange';
 import { Yellow } from './colors/Yellow';
 import { Green } from './colors/Green';
@@ -19,7 +18,7 @@ function App() {
       <h1 className="rainbow-header">Typescript Rainbow!</h1>
 
       <div className="rainbow-wrapper">
-        <Red initialColor={'red'} />
+        <div className="red" />
         <Orange initialColor="orange"></Orange>
         <Yellow initialColor="yellow"></Yellow>
         <Green initialColor="green"></Green>
