@@ -1,20 +1,22 @@
 import React from "react";
 import { useMutation, useQuery } from "react-query";
 import axios, { AxiosError } from "axios";
+import {YellowResponseBody} from "../../server/colors/yellow";
 
 type YellowColor = {
+  initialColor: string
 };
 
 type YellowColorHex = {
 };
 
-export const Yellow = ({initialColor}: {initialColor: string}) => {
-  const [color, setColor] = React.useState("yellow");
+export const Yellow: React.FC<YellowColor> = ({ initialColor }) => {
+  const [color, setColor] = React.useState<string>("yellow");
 
   const { data, error } = useQuery({
     queryKey: ["yellow"],
     queryFn: async () => {
-      const response = await axios.get("/yellow");
+      const response = await axios.get<YellowResponseBody>("/yellow");
       const data = response.data;
       return data;
     },
