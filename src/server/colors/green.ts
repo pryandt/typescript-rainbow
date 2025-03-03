@@ -14,7 +14,7 @@ export const greenGetter = (req: GreenGetRequest, res: GreenGetResponse) => {
   });
 };
 
-export const orangePoster = (
+export const greenPoster = (
   req: GreenGetRequest,
   res: GreenGetResponse
 ) => {
@@ -22,4 +22,4 @@ export const orangePoster = (
 };
 
 greenRouter.get("/", greenGetter);
-// greenRouter.post("/", greenPoster);
+greenRouter.post("/", greenPoster);
