@@ -1,18 +1,23 @@
 import { Request, Response, Router } from "express";
 
-type GreenGetResponse = Response;
+type GreenGetResponse = Response<{ color: string } | { colorError: string }>;
 type GreenGetRequest = Request;
 
 export const greenRouter = Router();
 
 export const greenGetter = (req: GreenGetRequest, res: GreenGetResponse) => {
-  res.send({ });
+  if (Math.random() > 0.5) {
+    return res.status(500).send({ colorError: "Server error" });
+  }
+  res.send({ 
+    color: "green" 
+  });
 };
 
-type GreenPostResponse = Response;
-type GreenPostRequest = Request;
-
-export const greenPoster = (req: GreenPostRequest, res: GreenPostResponse) => {
+export const greenPoster = (
+  req: GreenGetRequest,
+  res: GreenGetResponse
+) => {
   res.sendStatus(200);
 };
 
